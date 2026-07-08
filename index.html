@@ -1,49 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
-	<title>UESPI-SISU</title>
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<script src="lib/jquery-3.3.1.min.js"></script>
-	<script src="lib/scripts.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brasa & Sabor - Painel de Pedidos</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/scripts.js"></script>
+
+    <style>
+        body{
+            background:#111;
+            color:#fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .barraTop{
+            background:#8B0000;
+            height:12px;
+            width:100%;
+        }
+
+        .barraSuperior{
+            margin-top:20px;
+            margin-bottom:30px;
+        }
+
+        .logo{
+            width:110px;
+        }
+
+        .titulo{
+            font-size:46px;
+            font-weight:bold;
+            color:#ffffff;
+        }
+
+        .subtitulo{
+            font-size:22px;
+            color:#ffc107;
+        }
+
+        .painelPedido{
+            background:#1f1f1f;
+            border:4px solid #ff9800;
+            border-radius:15px;
+            padding:30px;
+            margin-top:20px;
+        }
+
+        .pedidoTexto{
+            font-size:42px;
+            font-weight:bold;
+        }
+
+        #pedidoAtualNumero{
+            font-size:170px;
+            font-weight:bold;
+            color:#ff9800;
+        }
+
+        .ultimaChamada{
+            background:#2b2b2b;
+            border-radius:10px;
+            margin-top:40px;
+            padding:20px;
+            text-align:center;
+        }
+
+        .ultimaChamadaTitulo{
+            font-size:32px;
+            font-weight:bold;
+            color:#ffc107;
+        }
+
+        .ultimaChamadaNumero{
+            font-size:90px;
+            font-weight:bold;
+            color:white;
+        }
+
+        .rodape{
+            margin-top:45px;
+            text-align:center;
+            font-size:22px;
+            color:#ccc;
+        }
+    </style>
+
 </head>
 
 <body>
-	<div class="barraTop">&nbsp;</div>
-	<div class="container page">
-		<div class="row barraSuperior">
-			<div class="col-xs-1">
-				<img src="imagens/uespi.png" class="uespiLogo">
-			</div>
-			<div class="col-xs-11" style="text-align: right;"><p></p>
-				<span class="uespiTexto">Brasa & Sabor</span><br>
-				<span class="subtitulo">Festa Gospel - Beira Rio - Sapucaia <strong>Festa Gospel 2026</strong></span>
-				<!-- <img src="imagens/sisu.png" class="sisuLogo"> -->
-			</div>
-		</div>
-		<div class="row">
-			<div class="senhaAtual">
-				<div class="row">
-					<div class="col-xs-5 col-xs-offset-1" style="text-align: right;"><br><br>
-						<span class="senhaAtualTexto">Pedido: &nbsp;</span>
-					</div>
-					<div class="col-xs-5"  style="text-align: left;">
-						<span id="senhaAtualNumero"> 000</span>
-					</div>
-					<input type="hidden" id="senhaNormal" value=" 000">
-					<input type="hidden" id="senhaPrioridade" value="P000">
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-4 ultimaSenha">
-				<br>
-				<span id="ultimaSenhaTexto">ÚLTIMA CHAMADA</span><br>
-				<span>Senha </span>
-				<span id="ultimaSenhaNumero"> 000</span>
-			</div>
-		</div>
-	</div>
-	<audio id="audioChamada" src="audio/chamada.wav"></audio>
+
+    <div class="barraTop"></div>
+
+    <div class="container">
+
+        <!-- Cabeçalho -->
+        <div class="row barraSuperior">
+
+            <div class="col-md-2 col-xs-2">
+
+                <!-- Troque pela sua logo -->
+                <img src="imagens/logo-brasa.png" class="logo">
+
+            </div>
+
+            <div class="col-md-20 col-xs-20 text-right">
+
+                <div class="titulo">
+                    BRASA & SABOR
+                </div>
+
+                <div class="subtitulo">
+                    Festa Gospel • Beira Rio • Sapucaia/RJ
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Pedido Atual -->
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="painelPedido">
+
+                    <div class="row">
+
+                        <div class="col-md-5 text-right">
+
+                            <div class="pedidoTexto">
+                                RETIRAR PEDIDO
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-7 text-left">
+
+                            <div id="pedidoAtualNumero">
+                                001
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Último Pedido -->
+
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="ultimaChamada">
+
+                    <div class="ultimaChamadaTitulo">
+                        ÚLTIMO PEDIDO CHAMADO
+                    </div>
+
+                    <div class="ultimaChamadaNumero" id="ultimaSenhaNumero">
+                        000
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Campos ocultos usados pelo JavaScript -->
+
+        <input type="hidden" id="senhaNormal" value="001">
+        <input type="hidden" id="senhaPrioridade" value="000">
+
+        <!-- Áudio -->
+        <audio id="audioChamada" src="audio/chamada.wav"></audio>
+
+        <!-- Rodapé -->
+
+        <div class="rodape">
+
+            🍢 Obrigado pela preferência • Brasa & Sabor 🍢
+
+        </div>
+
+    </div>
+
 </body>
+
 </html>
