@@ -2,201 +2,341 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Brasa & Sabor - Painel de Pedidos</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
     <script src="lib/jquery-3.3.1.min.js"></script>
     <script src="lib/scripts.js"></script>
 
     <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
         body{
-            background:#111;
-            color:#fff;
-            font-family: Arial, Helvetica, sans-serif;
+
+            overflow:hidden;
+
+            background:
+            linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),
+            url("imagens/fundo-madeira.jpg");
+
+            background-size:cover;
+            background-position:center;
+
+            color:#FFF;
+
+            font-family:Arial, Helvetica, sans-serif;
+
         }
 
-        .barraTop{
-            background:#8B0000;
-            height:12px;
-            width:100%;
-        }
+        .topo{
 
-        .barraSuperior{
-            margin-top:20px;
-            margin-bottom:30px;
+            height:130px;
+            background:#7d0000;
+            border-bottom:6px solid #ff9800;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:20px 50px;
+
         }
 
         .logo{
-            width:110px;
+
+            height:90px;
+
+        }
+
+        .empresa{
+
+            font-size:52px;
+            font-weight:bold;
+            color:#FFF;
+            letter-spacing:3px;
+
+        }
+
+        .evento{
+
+            font-size:24px;
+            color:#ffc107;
+
+        }
+
+        #relogio{
+
+            text-align:right;
+
+            font-size:26px;
+
+            color:#FFF;
+
         }
 
         .titulo{
-            font-size:46px;
-            font-weight:bold;
-            color:#ffffff;
-        }
 
-        .subtitulo{
-            font-size:22px;
-            color:#ffc107;
-        }
-
-        .painelPedido{
-            background:#1f1f1f;
-            border:4px solid #ff9800;
-            border-radius:15px;
-            padding:30px;
-            margin-top:20px;
-        }
-
-        .pedidoTexto{
-            font-size:42px;
-            font-weight:bold;
-        }
-
-        #pedidoAtualNumero{
-            font-size:170px;
-            font-weight:bold;
-            color:#ff9800;
-        }
-
-        .ultimaChamada{
-            background:#2b2b2b;
-            border-radius:10px;
-            margin-top:40px;
-            padding:20px;
             text-align:center;
+
+            margin-top:30px;
+
+            font-size:52px;
+
+            font-weight:bold;
+
+            color:#FFF;
+
         }
 
-        .ultimaChamadaTitulo{
-            font-size:32px;
+        .painel{
+
+            width:90%;
+
+            margin:auto;
+
+            margin-top:25px;
+
+            border-radius:20px;
+
+            border:6px solid #ff9800;
+
+            background:rgba(0,0,0,.55);
+
+            padding:30px;
+
+            box-shadow:0px 0px 40px #000;
+
+        }
+
+        .textoPedido{
+
+            text-align:center;
+
+            font-size:42px;
+
+            color:#FFF;
+
             font-weight:bold;
+
+            letter-spacing:2px;
+
+        }
+
+        #senhaAtualNumero{
+
+            text-align:center;
+
+            font-size:280px;
+
+            font-weight:bold;
+
+            color:#FFD600;
+
+            text-shadow:
+            0 0 15px #ff9800,
+            0 0 35px #ff9800,
+            0 0 60px #ff5722,
+            0 0 90px #ff0000;
+
+            transition:.35s;
+
+            animation:pulsar 1.2s infinite;
+
+            line-height:1;
+
+        }
+
+        @keyframes pulsar{
+
+            0%{
+
+                transform:scale(1);
+
+            }
+
+            50%{
+
+                transform:scale(1.03);
+
+            }
+
+            100%{
+
+                transform:scale(1);
+
+            }
+
+        }
+
+        .ultima{
+
+            margin:auto;
+
+            margin-top:35px;
+
+            width:55%;
+
+            background:#111;
+
+            border-radius:12px;
+
+            border:3px solid #555;
+
+            padding:20px;
+
+            text-align:center;
+
+        }
+
+        .ultimaTitulo{
+
             color:#ffc107;
+
+            font-size:30px;
+
+            font-weight:bold;
+
         }
 
-        .ultimaChamadaNumero{
+        #ultimaSenhaNumero{
+
             font-size:90px;
+
+            color:#FFF;
+
             font-weight:bold;
-            color:white;
+
+            margin-top:10px;
+
         }
 
         .rodape{
-            margin-top:45px;
+
+            position:absolute;
+
+            bottom:0;
+
+            width:100%;
+
             text-align:center;
-            font-size:22px;
-            color:#ccc;
+
+            padding:18px;
+
+            background:#7d0000;
+
+            font-size:26px;
+
+            letter-spacing:2px;
+
+            color:white;
+
         }
+
     </style>
 
 </head>
 
 <body>
 
-    <div class="barraTop"></div>
+    <div class="topo">
 
-    <div class="container">
+        <div>
 
-        <!-- Cabeçalho -->
-        <div class="row barraSuperior">
+            <!-- Coloque aqui sua logo -->
+            <img src="imagens/logo-brasa.png" class="logo">
 
-            <div class="col-md-2 col-xs-2">
+        </div>
 
-                <!-- Troque pela sua logo -->
-                <img src="imagens/logo-brasa.png" class="logo">
+        <div style="text-align:center;">
 
+            <div class="empresa">
+                BRASA & SABOR
             </div>
 
-            <div class="col-md-20 col-xs-20 text-right">
-
-                <div class="titulo">
-                    BRASA & SABOR
-                </div>
-
-                <div class="subtitulo">
-                    Festa Gospel • Beira Rio • Sapucaia/RJ
-                </div>
-
+            <div class="evento">
+                Festa Gospel • Beira Rio • Sapucaia/RJ
             </div>
 
         </div>
 
-        <!-- Pedido Atual -->
+        <div id="relogio">
 
-        <div class="row">
-
-            <div class="col-md-12">
-
-                <div class="painelPedido">
-
-                    <div class="row">
-
-                        <div class="col-md-5 text-right">
-
-                            <div class="pedidoTexto">
-                                RETIRAR PEDIDO
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-7 text-left">
-
-                            <div id="pedidoAtualNumero">
-                                001
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Último Pedido -->
-
-        <div class="row">
-
-            <div class="col-md-6 col-md-offset-3">
-
-                <div class="ultimaChamada">
-
-                    <div class="ultimaChamadaTitulo">
-                        ÚLTIMO PEDIDO CHAMADO
-                    </div>
-
-                    <div class="ultimaChamadaNumero" id="ultimaSenhaNumero">
-                        000
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Campos ocultos usados pelo JavaScript -->
-
-        <input type="hidden" id="senhaNormal" value="001">
-        <input type="hidden" id="senhaPrioridade" value="000">
-
-        <!-- Áudio -->
-        <audio id="audioChamada" src="audio/chamada.wav"></audio>
-
-        <!-- Rodapé -->
-
-        <div class="rodape">
-
-            🍢 Obrigado pela preferência • Brasa & Sabor 🍢
+            00:00:00
 
         </div>
 
     </div>
+
+    <div class="titulo">
+
+        RETIRAR PEDIDO
+
+    </div>
+
+    <div class="painel">
+
+        <div id="senhaAtualNumero">
+            0001
+        </div>
+
+    </div>
+
+    <div class="ultima">
+
+        <div class="ultimaTitulo">
+
+            ÚLTIMO PEDIDO CHAMADO
+
+        </div>
+
+        <div id="ultimaSenhaNumero">
+
+            0000
+
+        </div>
+
+    </div>
+
+    <div class="rodape">
+
+        🍢 Obrigado pela preferência • Brasa & Sabor 🍢
+
+    </div>
+
+    <input type="hidden" id="senhaNormal" value="0001">
+    <input type="hidden" id="senhaPrioridade" value="P000">
+
+    <audio id="audioChamada" src="audio/chamada.wav"></audio>
+
+    <script>
+
+        function atualizarRelogio(){
+
+            const agora=new Date();
+
+            const hora=agora.toLocaleTimeString('pt-BR');
+
+            const data=agora.toLocaleDateString('pt-BR');
+
+            document.getElementById("relogio").innerHTML=data+"<br>"+hora;
+
+        }
+
+        atualizarRelogio();
+
+        setInterval(atualizarRelogio,1000);
+
+    </script>
 
 </body>
 
